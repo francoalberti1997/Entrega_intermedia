@@ -7,7 +7,14 @@
     {% load static %}
 
 <h1>
-        {{informacion}}
+
+    {% for usuario in usuarios %}
+        {% if (usuario.nombre == informacion) and (usuario.contraseña == contraseña) %}
+            <p>
+                ha ingresado
+            </p>
+        {% endif %}
+    {% endfor %}
 </h1>
 
     {% endblock %}
