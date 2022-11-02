@@ -1,5 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from PrimeraApp import models
+from .forms import InputingForms
 
 
 def padre(request) :
@@ -15,8 +16,22 @@ def home(request):
 
 def ingreso(request) :
 
-    informacion = request.GET["nombre"] #trabajando en que información, el nombrey contraseña introducido matcheen con la DB (usuarios), usar filter
-    contraseña = request.GET["contraseña"] 
-    usuarios = models.Usuarios.objects.all
+    pass
 
-    return render(request, "PrimeraApp/ingreso.html", {"informacion":informacion, "usuarios":usuarios, "contraseña":contraseña})
+    return render(request, "PrimeraApp/ingreso.html")
+
+def formulario(request):
+
+    if request.method == "POST":
+        mi_formulario = InputingForms(request.POST)
+        if mi_formulario.is_valid():
+            data = mi_formulario.cleaned_data
+            usuario = models.Usuarios(nombre = mi_formulario["nombre"], apellido = mi_formulario["apellido"], contraseña = mi_formulario["contraseña"])
+            usuario.save()
+            return redirect("Formularios")
+
+    else:
+        mi_formulario = InputingForms()
+    
+    return render(request, "PrimeraApp/formularios.html", {"form":mi_formulario})
+
