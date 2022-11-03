@@ -9,17 +9,21 @@
    Nuestros alumnos ya están viendo los resultados!   
 </h1>
 
-<div id="formulario">
-   <div id="formulario_hijo">
-      <form action="ingreso" method="">
-         <ul>
-               <li> Nombre <input type="text" name="nombre" id="nombre"></li>
-               <li> Contraseña <input type="text" name="contraseña" id="apellido"></li>
-               <li><input type="submit" value="ingresar"></li>
-               </ul>
-      </form>
-   </div>
-</div>
+<p>
+   INGRESAR
+</p>
+<form action="" method="">
+
+   {% csrf_token %}
+   {{form.as_p }}
+   
+   <input type="submit" value="enviar">
+
+</form>
+
+
+
+
 
 {% for experiencia in experiencias %}
 
@@ -36,6 +40,11 @@
 
    {% endif %}
 {% endfor %}
+
+
+
+
+
 
    
 </html>

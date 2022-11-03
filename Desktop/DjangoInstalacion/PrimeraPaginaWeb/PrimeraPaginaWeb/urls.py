@@ -19,8 +19,8 @@ from PrimeraApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home),
+    path('home/', views.home, name = "home"),
     path('padre', views.padre, name = "padre"),
     path('home/ingreso/', views.ingreso), 
-    path('formularios', views.formulario, name ="Formularios"),       
+    path('contacto/', views.contacto), 
 ]

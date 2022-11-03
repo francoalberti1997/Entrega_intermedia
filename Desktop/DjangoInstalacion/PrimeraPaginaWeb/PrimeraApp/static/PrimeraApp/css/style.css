@@ -77,6 +77,13 @@ nav{
 
 }
 
+#formulario{
+     background-color: red;
+     width:50%;
+     justify-content: right;
+}
+
+
 #content{
      background-color: gainsboro;
      height: 800px;
@@ -96,9 +103,11 @@ font-size: xx-large;
 
 #resultados{
 display: flex;
+background-color: #008df3;
 }
 
 #formulario_hijo{
      background-color: #008df3;
      margin-left: 950px;
 }
+
