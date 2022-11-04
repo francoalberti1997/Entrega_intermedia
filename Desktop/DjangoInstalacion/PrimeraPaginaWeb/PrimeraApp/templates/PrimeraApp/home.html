@@ -12,11 +12,13 @@
 <p>
    INGRESAR
 </p>
-<form action="" method="">
+<form action="busqueda/" method="">
 
    {% csrf_token %}
-   {{form.as_p }}
-   
+   <p>ingrese nombre</p>
+   <input type="text" name="nombre">
+   <input type="password" name="contraseña">
+
    <input type="submit" value="enviar">
 
 </form>

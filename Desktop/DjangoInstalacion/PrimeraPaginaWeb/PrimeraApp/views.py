@@ -25,20 +25,7 @@ def home(request):
     experiencias =models.Experiencias.objects.all
     criterio = "3"    
 
-    if request.GET["nombre"]:
-        mi_formulario = InputingForms(request.POST)
-        
-        nombre = request.GET["nombre"]
-        usuario = models.Usuarios.objects.filter(nombre___icontains = nombre)
-
-        print(nombre, "aca mira")
-        return render(request, "PrimeraApp/ingreso.html", {"nombres":nombre, "usuarios":usuario})
-
-
-    else:
-        mi_formulario = InputingForms()
-
-    return render(request, "PrimeraApp/home.html", {"experiencias":experiencias, "criterio":criterio, "form":mi_formulario})
+    return render(request, "PrimeraApp/home.html", {"experiencias":experiencias, "criterio":criterio})
 
 
 def ingreso(request) :
@@ -47,3 +34,15 @@ def ingreso(request) :
     contraseña = request.GET["contraseña"] 
     usuarios = models.Usuarios.objects.all
     pass
+
+def busqueda(request):
+
+    nombre = request.GET["nombre"]
+    if nombre:
+        usuario = models.Usuarios.objects.filter(nombre = nombre)
+        if usuario:
+            print(usuario)
+            return render(request, "PrimeraApp/ingreso.html", {"usuario":usuario}) 
+
+
+    
